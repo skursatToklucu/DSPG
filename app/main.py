@@ -2,6 +2,7 @@ from fastapi import FastAPI, Depends, HTTPException, Request, Response
 from sqlalchemy.orm import Session
 from app.sql import crud, models, schemas
 from app.sql.database import SessionLocal, engine
+from app.repository import bll
 
 # uvicorn app.main:app
 app = FastAPI()
@@ -27,6 +28,7 @@ def get_db():
         db.close()
 
 
+# region User
 @app.post("/users/", response_model=schemas.User)
 def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     db_user = crud.get_user_by_email(db, email=user.email)
@@ -47,3 +49,11 @@ def read_user(user_id: int, db: Session = Depends(get_db)):
     if db_user is None:
         raise HTTPException(status_code=404, detail="Böyle bir kullanıcı bulunmamaktadır!")
     return db_user
+
+
+# endregion
+
+@app.get("triplet", response_model=list[schemas.Triplet])
+def read_triplets(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    triplets = crud.get_triplets(db, skip=skip, limit=limit)
+    return triplets

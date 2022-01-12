@@ -1,7 +1,9 @@
 from sqlalchemy.orm import Session
 from app.sql import models, schemas
+from app.repository import bll
 
 
+# region User
 def get_user(db: Session, user_id: int):
     return db.query(models.User).filter(models.User.id == user_id).first()
 
@@ -21,3 +23,11 @@ def create_user(db: Session, user: schemas.UserCreate):
     db.commit()
     db.refresh(db_user)
     return db_user
+
+
+# endregion User
+
+# region Triplet
+def get_triplets(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.Triplet).offset(skip).limit(limit).all()
+# endregion

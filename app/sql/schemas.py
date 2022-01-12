@@ -17,6 +17,7 @@ from pydantic import BaseModel
 #     class Config:
 #         orm_mode = True
 
+# region User
 class UserBase(BaseModel):
     email: str
 
@@ -32,3 +33,24 @@ class User(UserBase):
 
     class Config:
         orm_mode = True
+
+
+# endregion
+
+# region Triplet
+class TripletBase(BaseModel):
+    name: str
+    pattern: str
+
+
+class TripletCreate(TripletBase):
+    pass
+
+
+class Triplet(TripletBase):
+    id: int
+
+    class Config:
+        orm_mode = True
+
+# endregion

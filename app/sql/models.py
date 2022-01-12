@@ -1,6 +1,9 @@
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from app.sql.database import Base, engine
+from alembic import op
+from app.repository import bll
+from sqlalchemy.sql import table, column
 
 
 class User(Base):
@@ -12,6 +15,16 @@ class User(Base):
     # items = relationship("Item", back_populates="owner")
 
 
+class Triplet(Base):
+    __tablename__ = "triplets"
+    id = Column(Integer, primary_key=True, index=True)
+    pattern = Column(String)
+
+
+triplet_data = bll.create_all_triplets()
+triplet_table = table(Triplet.__tablename__, column('id', Integer), column('pattern', String))
+
+op.bulk_insert(triplet_table, triplet_data)
 Base.metadata.create_all(bind=engine)
 
 # İlişki Örneği için
