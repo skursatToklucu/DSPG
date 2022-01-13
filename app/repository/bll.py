@@ -12,7 +12,7 @@ tripletData = []
 
 
 def create_all_triplets():
-    item = []
+    item = {}
     x = 0
     for triplet in tripletCombinations:
         x = x + 1
