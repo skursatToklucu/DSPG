@@ -12,10 +12,12 @@ tripletData = []
 
 
 def create_all_triplets():
-    item = {}
+    item = []
     x = 0
     for triplet in tripletCombinations:
         x = x + 1
         item = {'id': x, 'pattern': triplet}
-        print(item)
-    return json.dumps(tripletData.append(item))
+        tripletData.append(item)
+    return json.dumps(list(tripletData))
+
+

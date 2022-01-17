@@ -53,7 +53,14 @@ def read_user(user_id: int, db: Session = Depends(get_db)):
 
 # endregion
 
-@app.get("triplet", response_model=list[schemas.Triplet])
+@app.post("/triplets/", response_model=schemas.Triplet)
+def create_triplets(db: Session = Depends(get_db)):
+    return crud.create_triplets(db)
+
+
+
+
+@app.get("/triplets/", response_model=list[schemas.Triplet])
 def read_triplets(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     triplets = crud.get_triplets(db, skip=skip, limit=limit)
     return triplets

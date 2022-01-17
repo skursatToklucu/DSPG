@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 from app.sql import models, schemas
 from app.repository import bll
+import json
 
 
 # region User
@@ -30,4 +31,14 @@ def create_user(db: Session, user: schemas.UserCreate):
 # region Triplet
 def get_triplets(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Triplet).offset(skip).limit(limit).all()
+
+
+def create_triplets(db: Session):
+    x = 0
+    triplet_data = bll.create_all_triplets()
+    triplets = json.loads(triplet_data)
+    for (k, v) in triplets:
+        db.execute(f"INSERT INTO triplets (pattern) VALUES ('{triplets[x][v]}')")
+        x = x + 1
+    db.commit()
 # endregion

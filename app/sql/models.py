@@ -21,10 +21,11 @@ class Triplet(Base):
     pattern = Column(String)
 
 
-triplet_data = bll.create_all_triplets()
-triplet_table = table(Triplet.__tablename__, column('id', Integer), column('pattern', String))
-
-op.bulk_insert(triplet_table, triplet_data)
+# triplet_data = bll.create_all_triplets()
+# print(triplet_data)
+# triplet_table = table('triplets', column('id', Integer), column('pattern', String))
+#
+# op.bulk_insert(triplet_table, triplet_data)
 Base.metadata.create_all(bind=engine)
 
 # İlişki Örneği için

@@ -39,7 +39,6 @@ class User(UserBase):
 
 # region Triplet
 class TripletBase(BaseModel):
-    name: str
     pattern: str
 
 
