@@ -21,20 +21,10 @@ class Triplet(Base):
     pattern = Column(String)
 
 
-# triplet_data = bll.create_all_triplets()
-# print(triplet_data)
-# triplet_table = table('triplets', column('id', Integer), column('pattern', String))
-#
-# op.bulk_insert(triplet_table, triplet_data)
-Base.metadata.create_all(bind=engine)
+class Cuarta(Base):
+    __tablename__ = "cuartas"
+    id = Column(Integer, primary_key=True, index=True)
+    pattern = Column(String)
 
-# İlişki Örneği için
-# class Item(Base):
-#     __tablename__ = "items"
-#
-#     id = Column(Integer, primary_key=True, index=True)
-#     title = Column(String, index=True)
-#     description = Column(String, index=True)
-#     owner_id = Column(Integer, ForeignKey("users.id"))
-#
-#     owner = relationship("User", back_populates="items")
+
+Base.metadata.create_all(bind=engine)

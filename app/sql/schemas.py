@@ -52,4 +52,21 @@ class Triplet(TripletBase):
     class Config:
         orm_mode = True
 
+
+# endregion
+
+# region Cuarta
+class CuartaBase(BaseModel):
+    pattern: str
+
+
+class CuartaCreate(CuartaBase):
+    pass
+
+
+class Cuarta(CuartaBase):
+    id: int
+
+    class Config:
+        orm_mode = True
 # endregion

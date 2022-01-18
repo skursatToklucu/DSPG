@@ -41,4 +41,22 @@ def create_triplets(db: Session):
         db.execute(f"INSERT INTO triplets (pattern) VALUES ('{triplets[x][v]}')")
         x = x + 1
     db.commit()
+
+
+# endregion
+
+
+# region Cuarta
+def get_cuartas(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.Cuarta).offset(skip).limit(limit).all()
+
+
+def create_cuartas(db: Session):
+    x = 0
+    cuarta_data = bll.create_all_cuartas()
+    cuartas = json.loads(cuarta_data)
+    for (k, v) in cuartas:
+        db.execute(f"INSERT INTO cuartas (pattern) VALUES ('{cuartas[x][v]}')")
+        x = x + 1
+    db.commit()
 # endregion
