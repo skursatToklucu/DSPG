@@ -59,4 +59,56 @@ def create_cuartas(db: Session):
         db.execute(f"INSERT INTO cuartas (pattern) VALUES ('{cuartas[x][v]}')")
         x = x + 1
     db.commit()
+
+
+# endregion
+
+# region Quintuplet
+def get_quintuplets(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.Quintuplet).offset(skip).limit(limit).all()
+
+
+def create_quintuplets(db: Session):
+    x = 0
+    quin_data = bll.create_all_quintuplets()
+    quintets = json.loads(quin_data)
+    for (k, v) in quintets:
+        db.execute(f"INSERT INTO quintuplets (pattern) VALUES('{quintets[x][v]}')")
+        x = x + 1
+    db.commit()
+
+
+# endregion
+
+
+# region Sextuplet
+def get_sextuplets(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.Sextuplet).offset(skip).limit(limit).all()
+
+
+def create_sextuplets(db: Session):
+    x = 0
+    sextup_data = bll.create_all_sextuplet()
+    sextuplets = json.loads(sextup_data)
+    for (k, v) in sextuplets:
+        db.execute(f"INSERT INTO sextuplets (pattern) VALUES('{sextuplets[x][v]}')")
+        x = x + 1
+    db.commit()
+
+
+# endregion
+
+# region Septuplet
+def get_septuplets(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.Septuplet).offset(skip).limit(limit).all()
+
+
+def create_septuplets(db: Session):
+    x = 0
+    septup_data = bll.create_all_septuplet()
+    septuplets = json.loads(septup_data)
+    for (k, v) in septuplets:
+        db.execute(f"INSERT INTO septuplets (pattern) VALUES('{septuplets[x][v]}')")
+        x = x + 1
+    db.commit()
 # endregion

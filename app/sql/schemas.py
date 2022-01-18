@@ -1,22 +1,6 @@
 from pydantic import BaseModel
 
 
-# class ItemBase(BaseModel):
-#     title: str
-#     description: str | None = None
-#
-#
-# class ItemCreate(ItemBase):
-#     pass
-#
-#
-# class Item(ItemBase):
-#     id: int
-#     owner_id: int
-#
-#     class Config:
-#         orm_mode = True
-
 # region User
 class UserBase(BaseModel):
     email: str
@@ -65,6 +49,62 @@ class CuartaCreate(CuartaBase):
 
 
 class Cuarta(CuartaBase):
+    id: int
+
+    class Config:
+        orm_mode = True
+
+
+# endregion
+
+# region Quintuplet
+class QuintupletBase(BaseModel):
+    pattern: str
+
+
+class QuintupletCreate(QuintupletBase):
+    pass
+
+
+class Quintuplet(QuintupletBase):
+    id: int
+
+    class Config:
+        orm_mode = True
+
+
+# endregion
+
+
+# region Sextuplet
+class SextupletBase(BaseModel):
+    pattern: str
+
+
+class SextupletCreate(SextupletBase):
+    pass
+
+
+class Sextuplet(SextupletBase):
+    id: int
+
+    class Config:
+        orm_mode = True
+
+
+# endregion
+
+
+# region Septuplet
+class SeptupletBase(BaseModel):
+    pattern: str
+
+
+class SeptupletCreate(SeptupletBase):
+    pass
+
+
+class Septuplet(SeptupletBase):
     id: int
 
     class Config:

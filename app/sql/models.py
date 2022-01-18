@@ -27,4 +27,22 @@ class Cuarta(Base):
     pattern = Column(String)
 
 
+class Quintuplet(Base):
+    __tablename__ = "quintuplets"
+    id = Column(Integer, primary_key=True, index=True)
+    pattern = Column(String)
+
+
+class Sextuplet(Base):
+    __tablename__ = "sextuplets"
+    id = Column(Integer, primary_key=True, index=True)
+    pattern = Column(String)
+
+
+class Septuplet(Base):
+    __tablename__ = "septuplets"
+    id = Column(Integer, primary_key=True, index=True)
+    pattern = Column(String)
+
+
 Base.metadata.create_all(bind=engine)

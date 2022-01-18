@@ -59,7 +59,7 @@ def create_triplets(db: Session = Depends(get_db)):
 
 
 @app.get("/triplets/", response_model=list[schemas.Triplet])
-def read_triplets(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+def read_triplets(skip: int = 0, limit: int = 1000, db: Session = Depends(get_db)):
     triplets = crud.get_triplets(db, skip=skip, limit=limit)
     return triplets
 
@@ -70,6 +70,39 @@ def create_cuartas(db: Session = Depends(get_db)):
 
 
 @app.get("/cuartas/", response_model=list[schemas.Triplet])
-def read_cuartas(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+def read_cuartas(skip: int = 0, limit: int = 1000, db: Session = Depends(get_db)):
     cuartas = crud.get_cuartas(db, skip=skip, limit=limit)
     return cuartas
+
+
+@app.post("/quintuplets/", response_model=schemas.Quintuplet)
+def create_quintuplets(db: Session = Depends(get_db)):
+    return crud.create_quintuplets(db)
+
+
+@app.get("/quintuplets/", response_model=list[schemas.Quintuplet])
+def read_quintuplets(skip: int = 0, limit: int = 1000, db: Session = Depends(get_db)):
+    quintets = crud.get_quintuplets(db, skip=skip, limit=limit)
+    return quintets
+
+
+@app.post("/sextuplets/", response_model=schemas.Sextuplet)
+def create_sextuplets(db: Session = Depends(get_db)):
+    return crud.create_sextuplets(db)
+
+
+@app.get("/sextuplets/", response_model=list[schemas.Sextuplet])
+def read_sextuplets(skip: int = 0, limit: int = 1000, db: Session = Depends(get_db)):
+    sextuplets = crud.get_sextuplets(db, skip=skip, limit=limit)
+    return sextuplets
+
+
+@app.post("/septuplets/", response_model=schemas.Septuplet)
+def create_septuplets(db: Session = Depends(get_db)):
+    return crud.create_septuplets(db)
+
+
+@app.get("/septuplets/", response_model=list[schemas.Septuplet])
+def read_septuplets(skip: int = 0, limit: int = 1000, db: Session = Depends(get_db)):
+    septuplets = crud.get_septuplets(db, skip=skip, limit=limit)
+    return septuplets
