@@ -106,3 +106,9 @@ def create_septuplets(db: Session = Depends(get_db)):
 def read_septuplets(skip: int = 0, limit: int = 1000, db: Session = Depends(get_db)):
     septuplets = crud.get_septuplets(db, skip=skip, limit=limit)
     return septuplets
+
+
+@app.get("/filter_cuartas/", response_model=schemas.Cuarta)
+def filter_cuartas(search_filter: str = ' ', skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
+    filterCuartas = crud.filter_cuartas(db, skip, limit, search_filter)
+    return filterCuartas

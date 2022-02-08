@@ -20,11 +20,17 @@ class Triplet(Base):
     id = Column(Integer, primary_key=True, index=True)
     pattern = Column(String)
 
+    def __init__(self, pattern):
+        self.pattern = pattern
+
 
 class Cuarta(Base):
     __tablename__ = "cuartas"
     id = Column(Integer, primary_key=True, index=True)
     pattern = Column(String)
+
+    def __init__(self, pattern):
+        self.pattern = pattern
 
 
 class Quintuplet(Base):
@@ -32,17 +38,26 @@ class Quintuplet(Base):
     id = Column(Integer, primary_key=True, index=True)
     pattern = Column(String)
 
+    def __init__(self, pattern):
+        self.pattern = pattern
+
 
 class Sextuplet(Base):
     __tablename__ = "sextuplets"
     id = Column(Integer, primary_key=True, index=True)
     pattern = Column(String)
 
+    def __init__(self, pattern):
+        self.pattern = pattern
+
 
 class Septuplet(Base):
     __tablename__ = "septuplets"
     id = Column(Integer, primary_key=True, index=True)
     pattern = Column(String)
+
+    def __init__(self, pattern):
+        self.pattern = pattern
 
 
 Base.metadata.create_all(bind=engine)

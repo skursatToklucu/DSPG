@@ -1,3 +1,4 @@
+import sqlalchemy.sql
 from sqlalchemy.orm import Session
 from app.sql import models, schemas
 from app.repository import bll
@@ -59,6 +60,10 @@ def create_cuartas(db: Session):
         db.execute(f"INSERT INTO cuartas (pattern) VALUES ('{cuartas[x][v]}')")
         x = x + 1
     db.commit()
+
+
+def filter_cuartas(db: Session, skip: int = 0, limit: int = 10, search_filter: str = ' '):
+    return db.query(models.Cuarta).filter_by(pattern=search_filter).first()
 
 
 # endregion
