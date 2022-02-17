@@ -1,7 +1,9 @@
 import sqlalchemy.sql
 from sqlalchemy.orm import Session
+from sqlalchemy import select
 from app.sql import models, schemas
 from app.repository import bll
+from app.sql import database
 import json
 
 
@@ -62,8 +64,8 @@ def create_cuartas(db: Session):
     db.commit()
 
 
-def filter_cuartas(db: Session, skip: int = 0, limit: int = 10, search_filter: str = ' '):
-    return db.query(models.Cuarta).filter_by(pattern=search_filter).first()
+def filter_cuartas(db: Session, search_filter: str):
+    return db.query(models.Cuarta).filter(models.Cuarta.pattern.like(f'{search_filter}%')).all()
 
 
 # endregion
